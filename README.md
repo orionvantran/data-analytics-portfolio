@@ -13,14 +13,14 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 
 ---
 
-## 🎓 Certifications  
-![Coursera](https://img.shields.io/badge/-Coursera-0056D2?logo=coursera&logoColor=white)  [Google Data Analytics Professional Certificate](https://www.coursera.org/account/accomplishments/specialization/3A580RUDIHU5)  
+## 🎓 Certifications  ![Coursera](https://img.shields.io/badge/-Coursera-0056D2?logo=coursera&logoColor=white) ![Udemy](https://img.shields.io/badge/-Udemy-A435F0?logo=udemy&logoColor=white) 
+[Google Data Analytics Professional Certificate](https://www.coursera.org/account/accomplishments/specialization/3A580RUDIHU5)  
 
-![Udemy](https://img.shields.io/badge/-Udemy-A435F0?logo=udemy&logoColor=white)  [SQL Bootcamp](https://www.udemy.com/certificate/UC-be623841-1685-4ee5-a1ed-59ffdf3ab659/)  
+[SQL Bootcamp](https://www.udemy.com/certificate/UC-be623841-1685-4ee5-a1ed-59ffdf3ab659/)  
 
-![Udemy](https://img.shields.io/badge/-Udemy-A435F0?logo=udemy&logoColor=white)  [Advanced Excel: Power Query & DAX](https://www.udemy.com/certificate/UC-99c6589a-319b-4fe6-8296-e0d0db205db9/)  
+[Advanced Excel: Power Query & DAX](https://www.udemy.com/certificate/UC-99c6589a-319b-4fe6-8296-e0d0db205db9/)  
 
-![Udemy](https://img.shields.io/badge/-Udemy-A435F0?logo=udemy&logoColor=white)  [Tableau Dashboards](https://www.udemy.com/certificate/UC-daebe878-aadc-4243-988b-ad48e93e7454/)  
+[Tableau Dashboards](https://www.udemy.com/certificate/UC-daebe878-aadc-4243-988b-ad48e93e7454/)  
 
 ---
 
@@ -56,4 +56,4 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
  
 ---
 
-Let’s connect on [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/orion-t)
+# **Let’s connect on [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/orion-t) !**
