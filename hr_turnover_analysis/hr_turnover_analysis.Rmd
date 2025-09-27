@@ -1,0 +1,403 @@
+---
+title: "HR Turnover Analysis"
+author: "Orion Tran"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Introduction
+
+This project is a personal portfolio analysis that applies concepts from my Master’s in Applied Industrial-Organizational Psychology to HR data on employee turnover. It is designed as a professional-style report to both **practice evidence-based HR analytics** and to demonstrate my **ability to translate data into actionable insights** for organizations
+
+Employee turnover is a costly challenge because replacing an employee can take months of lost productivity and additional hiring expenses. This analysis explores attrition patterns in a data set of 311 employees to answer a simple question: **what factors drive people to leave, and where should HR intervene first?**
+
+**Key Findings from this data set**  
+- **33% of employees leave overall**, with risk concentrated in the **first year of tenure**.  
+- The **Production department** experiences the highest attrition rates.  
+- **Tenure is the strongest predictor** of attrition; salary, satisfaction, and engagement matter less once tenure is considered.  
+- A modest **5% reduction in first-year Production attrition could save ~$375,000 annually** in replacement costs.  
+- If similar improvements were achieved **across all departments**, potential savings could exceed **$800,000 annually**.  
+
+**Recommendation:** HR should prioritize stronger onboarding, early-tenure mentoring, and targeted retention programs in Production.  
+
+---
+
+# Part 1: Data Cleaning & Preparation
+We begin by importing the necessary R libraries:  
+
+• **readr** for importing CSVs 
+
+• **dplyr** for data manipulation  
+
+• **tibble** for tidy tables  
+
+• **lubridate** for handling dates  
+
+• **janitor** for cleaning variable names  
+
+• **ggplot2** for visualizations  
+
+```{r Libraries, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(janitor)
+library(lubridate)
+library(ggplot2)
+library(tibble)
+```
+
+We then load the dataset and parse dates:
+
+```{r Load data + Parse dates}
+# Read + clean data
+turnover_data <- read_csv("~/Project Datasets/HRDataset_v14.csv") %>%
+  clean_names() %>%
+  mutate(
+    dateof_hire         = mdy(dateof_hire),
+    dateof_termination  = mdy(dateof_termination),
+    last_performance_review_date = mdy(last_performance_review_date)
+  )
+```
+
+Next, we set a snapshot date and engineer new features: **tenure (years at the company, continuous), salary (continuous), and engagement (continuous)**. We also drop ID variables that don’t help with analysis.
+
+```{r Data Cleaning + Preparation}
+# Snapshot date
+snap <- max(turnover_data$dateof_termination,
+            turnover_data$last_performance_review_date,
+            turnover_data$dateof_hire,
+            na.rm = TRUE)
+
+# Feature engineering (continuous variables)
+turnover_data <- turnover_data %>%
+  mutate(
+    attrition_flag = termd,
+    end_date = if_else(!is.na(dateof_termination), dateof_termination, snap),
+    years_at_company = as.numeric(difftime(end_date, dateof_hire, units = "days")) / 365.25,
+    # Keep continuous variables instead of bands
+    salary_cont = salary,
+    engagement_cont = engagement_survey
+  ) %>%
+  select(
+    -employee_name, -emp_id, -manager_id,
+    -married_id, -marital_status_id, -gender_id, -emp_status_id,
+    -dept_id, -perf_score_id, -position_id, -zip
+  )
+
+```
+
+**What this shows:**
+
+The dataset is now structured for analysis, with features ready to compare attrition rates across groups.
+
+---
+
+# Part 2: KPIs & Exploratory Data Analysis
+With a clean dataset, we can now explore overall attrition and how it breaks down across key variables. We’ll start with the **overall attrition rate** as a baseline.
+
+```{r Overall Attrition Rate}
+
+# Overall attrition
+overall_attrition_rate <- mean(turnover_data$attrition_flag, na.rm = TRUE)
+
+overall_tbl <- turnover_data %>%
+  mutate(attrition_status = if_else(attrition_flag == 1, "Attrited", "Still employed")) %>%
+  count(attrition_status) %>%
+  mutate(pct = n / sum(n))
+
+ggplot(overall_tbl, aes(attrition_status, pct, fill = attrition_status)) +
+  geom_col() +
+  geom_text(aes(label = paste0(round(pct*100), "%")), vjust = -0.3) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("Attrited" = "darkred", "Still employed" = "gray70")) +
+  labs(title = "Overall Attrition", x = NULL, y = "Percent") +
+  theme_minimal() +
+  guides(fill = "none")
+```
+
+**What this shows:**
+
+Overall attrition is 33%.
+That means nearly 1 out of 3 employees leave, setting the stage for deeper analysis.
+
+---
+
+```{r Attrition by Tenure}
+# Attrition by tenure
+tenure_attrition <- turnover_data %>%
+  mutate(tenure_year = floor(years_at_company)) %>%
+  group_by(tenure_year) %>%
+  summarise(
+    headcount = n(),
+    n_attrited = sum(attrition_flag == 1, na.rm = TRUE),
+    attrition_rate = n_attrited / headcount,
+    .groups = "drop"
+  )
+
+ggplot(tenure_attrition, aes(x = tenure_year, y = attrition_rate, fill = attrition_rate)) +
+  geom_col() +
+  geom_text(aes(label = paste0(n_attrited, " / ", headcount)), vjust = -0.3, size = 3) +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0, 0.1))) +
+  scale_x_continuous(breaks = tenure_attrition$tenure_year) +
+  scale_fill_gradient(low = "lightgray", high = "darkred") +
+  labs(title = "Attrition Rate by Tenure (Years at Company)",
+       x = "Years at Company", y = "Attrition Rate") +
+  guides(fill = "none") +
+  theme_minimal()
+```
+
+**What this shows:**
+
+Attrition is **heavily front-loaded**
+
+•The majority of exits occur within the **first year**.
+
+•Retention declines around the two-year mark but improves significantly with longer tenure.
+
+**Takeaway: tenure — especially the first year — is a critical risk period.**
+
+```{r Attrition by Department}
+# Attrition by department
+dept_attrition <- turnover_data %>%
+  group_by(department) %>%
+  summarise(
+    headcount = n(),
+    n_attrited = sum(attrition_flag == 1, na.rm = TRUE),
+    attrition_rate = n_attrited / headcount,
+    .groups = "drop"
+  )
+
+ggplot(dept_attrition, aes(x = reorder(department, -attrition_rate), y = attrition_rate, fill = attrition_rate)) +
+  geom_col() +
+  geom_text(aes(label = paste0(n_attrited, " / ", headcount)), vjust = -0.3, size = 3) +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0, 0.1))) +
+  scale_fill_gradient(low = "lightgray", high = "darkred") +
+  labs(title = "Attrition Rate by Department",
+       x = "Department", y = "Attrition Rate") +
+  guides(fill = "none") +
+  theme_minimal()
+```
+
+**What this shows:**
+
+The **Production department** has the **highest attrition rate**. While Software Engineering also appears high, its small headcount makes the comparison less reliable.
+
+This identifies Production as the priority area for deeper analysis.
+
+# Part 2b: Drill-Down within Production
+Since Production has the highest attrition, we drill down further. We’ll first look at tenure within Production, then test satisfaction and engagement levels.
+```{r Attrition by Tenure within Production}
+# Attrition by tenure in Production
+prod_tenure_attrition <- turnover_data %>%
+  filter(department == "Production") %>%
+  mutate(tenure_year = floor(years_at_company)) %>%
+  group_by(tenure_year) %>%
+  summarise(
+    headcount = n(),
+    n_attrited = sum(attrition_flag == 1, na.rm = TRUE),
+    attrition_rate = n_attrited / headcount,
+    .groups = "drop"
+  )
+
+ggplot(prod_tenure_attrition, aes(x = tenure_year, y = attrition_rate, fill = attrition_rate)) +
+  geom_col() +
+  geom_text(aes(label = paste0(n_attrited, " / ", headcount)),
+            vjust = -0.3, size = 3) +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0, 0.1))) +
+  scale_x_continuous(breaks = prod_tenure_attrition$tenure_year) +
+  scale_fill_gradient(low = "lightgray", high = "darkred") +
+  labs(title = "Attrition Rate by Tenure within Production",
+       x = "Years at Company", y = "Attrition Rate") +
+  guides(fill = "none") +
+  theme_minimal()
+```
+
+**What this shows:**
+
+The spike is clear: **first-year Production employees leave at much higher rates**, than longer-tenure employees (being at 100%).
+This confirms the **onboarding period is the main vulnerability.**
+
+```{r Attrition by Satisfaction in Production}
+# Attrition by satisfaction in Production
+prod_satisfaction_attrition <- turnover_data %>%
+  filter(department == "Production") %>%
+  group_by(emp_satisfaction) %>%
+  summarise(
+    headcount = n(),
+    n_attrited = sum(attrition_flag == 1, na.rm = TRUE),
+    attrition_rate = n_attrited / headcount,
+    .groups = "drop"
+  )
+
+ggplot(prod_satisfaction_attrition, aes(x = emp_satisfaction, y = attrition_rate, fill = attrition_rate)) +
+  geom_col() +
+  geom_text(aes(label = paste0(n_attrited, " / ", headcount)), vjust = -0.3, size = 3) +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0, 0.1))) +
+  scale_x_continuous(breaks = prod_satisfaction_attrition$emp_satisfaction) +
+  scale_fill_gradient(low = "lightgray", high = "darkred") +
+  labs(title = "Attrition by Satisfaction within Production",
+       x = "Satisfaction (1–5)", y = "Attrition Rate") +
+  guides(fill = "none") +
+  theme_minimal()
+```
+
+**What this shows:**
+
+Attrition varies somewhat by satisfaction, but the signal is inconsistent. Satisfaction matters less than tenure.
+
+```{r Attrition by Engagement in Production}
+# Attrition by engagement bands in Production
+prod_engagement_attrition <- turnover_data %>%
+  filter(department == "Production") %>%
+  mutate(engagement_band = ntile(engagement_survey, 4)) %>%
+  group_by(engagement_band) %>%
+  summarise(
+    headcount = n(),
+    n_attrited = sum(attrition_flag == 1, na.rm = TRUE),
+    attrition_rate = n_attrited / headcount,
+    .groups = "drop"
+  ) %>%
+  mutate(engagement_band = factor(engagement_band,
+                                  labels = c("Q1 (Low)", "Q2", "Q3", "Q4 (High)")))
+
+ggplot(prod_engagement_attrition, aes(x = engagement_band, y = attrition_rate, fill = attrition_rate)) +
+  geom_col() +
+  geom_text(aes(label = paste0(n_attrited, " / ", headcount)), vjust = -0.3, size = 3) +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0, 0.1))) +
+  scale_fill_gradient(low = "lightgray", high = "darkred") +
+  labs(title = "Attrition by Engagement Band within Production",
+       x = "Engagement Quartile", y = "Attrition Rate") +
+  guides(fill = "none") +
+  theme_minimal()
+```
+
+**What this shows:**
+
+Attrition is higher in the lowest engagement quartile, but the effect is modest. Like satisfaction, engagement is secondary to tenure.
+
+---
+
+# Part 3: Logistic Regression
+To confirm which factors matter when controlling for others, we ran a logistic regression with **continuous predictors (tenure in years, salary, engagement score, and satisfaction), plus department indicators**.
+
+```{r Logistic Regression}
+# Logistic regression with continuous predictors
+model <- glm(
+  attrition_flag ~ department + years_at_company + emp_satisfaction +
+    engagement_cont + salary_cont,
+  data = turnover_data,
+  family = binomial()
+)
+
+# Odds ratios
+or <- exp(coef(model))
+ci <- confint.default(model)
+ci <- exp(ci)
+p  <- summary(model)$coefficients[, "Pr(>|z|)"]
+
+or_table <- tibble(
+  term = names(or),
+  odds_ratio = round(as.numeric(or), 2),
+  conf_low   = round(as.numeric(ci[, 1]), 2),
+  conf_high  = round(as.numeric(ci[, 2]), 2),
+  p_value    = round(as.numeric(p), 3)
+) %>%
+  arrange(p_value)
+
+or_table
+```
+
+**What this shows:**
+
+• **Tenure** has the strongest independent effect: each additional year at the company substantially **reduces the odds of leaving**.
+
+• **Production** still shows elevated attrition risk, though the difference is less statistically certain.
+
+• **Salary, satisfaction, and engagement** show little added effect once tenure is accounted for.
+
+**Takeaway: tenure is the dominant predictor of attrition.**
+
+---
+
+# Part 4: Focused Statistical Tests
+We now use targeted tests to validate patterns observed earlier.
+```{r Focused Statistical Tests}
+# Department × Attrition
+tbl_dept <- table(turnover_data$department, turnover_data$attrition_flag)
+chi_res <- chisq.test(tbl_dept)
+
+# Tenure vs Attrition
+t_res <- t.test(years_at_company ~ attrition_flag, data = turnover_data)
+
+# Production vs Others
+turnover_data <- turnover_data %>%
+  mutate(prod_vs_other = if_else(department == "Production", "Production", "Other"))
+tbl_prod <- table(turnover_data$prod_vs_other, turnover_data$attrition_flag)
+prod_chi <- chisq.test(tbl_prod)
+
+# Summary
+test_summary <- tribble(
+  ~Test, ~Variables, ~Statistic, ~p_value, ~Interpretation,
+  
+  "Chi-Square", "Department × Attrition", round(chi_res$statistic, 2), signif(chi_res$p.value, 3),
+  ifelse(chi_res$p.value < 0.05, "Attrition differs by department", "No difference across departments"),
+  
+  "t-Test", "Tenure (years) × Attrition", round(t_res$statistic, 2), signif(t_res$p.value, 3),
+  ifelse(t_res$p.value < 0.05, "Average tenure differs (shorter = higher attrition)", "No significant tenure difference"),
+  
+  "Chi-Square", "Production vs Others × Attrition", round(prod_chi$statistic, 2), signif(prod_chi$p.value, 3),
+  ifelse(prod_chi$p.value < 0.05, "Attrition significantly higher in Production", "No significant Production difference")
+)
+
+test_summary
+```
+
+**What this shows:**
+
+•Attrition **differs by department** (Production is worst).
+
+•Employees who leave have **significantly shorter tenure**.
+
+•Production has **significantly higher attrition** than all other groups combined.
+
+---
+
+### Return on Investment (ROI)
+
+```{r ROI Estimate}
+# ROI estimate (aggressive: all employees, 9 months salary)
+avg_salary <- mean(turnover_data$salary, na.rm = TRUE)
+aggressive_savings <- avg_salary * 0.75 * (nrow(turnover_data) * 0.05)
+
+# Conservative version:
+# - Use 6 months of salary (0.5 instead of 0.75)
+# - Apply 5% reduction only to Production employees
+prod_count <- nrow(filter(turnover_data, department == "Production"))
+conservative_savings <- avg_salary * 0.5 * (prod_count * 0.05)
+
+aggressive_savings
+conservative_savings
+```
+
+Attrition is **not evenly distributed** across the company. The highest-risk group is **Production employees in their first year of tenure**, where turnover is heavily concentrated. Logistic regression confirmed that **tenure is the dominant predictor** of attrition, while satisfaction, engagement, and salary play a smaller role once tenure is considered.  
+
+Even a small improvement in retention could create measurable value. Using **conservative assumptions** — focusing only on first-year Production employees and applying the lower end of SHRM’s benchmark (six months of salary) — reducing attrition by just 5% would save about **$375,000 annually**. This is the most immediate, actionable opportunity.  
+
+Once attrition in Production is stabilized, applying similar approaches across departments could unlock even greater savings — potentially exceeding **$800,000 each year**.  
+
+---
+
+# Recommendations
+
+To capture these savings and stabilize the workforce, HR should prioritize:  
+
+• **Stronger onboarding**  
+• **Early-tenure mentoring and support**  
+• **Targeted retention programs in Production**  
+
+These actions directly address the most vulnerable employees, improve retention, and create a tangible return on investment.  
+
+---
+
+# References
+Society for Human Resource Management. (2016). Human capital benchmarking report. SHRM. https://bestmanagementarticles.com/wp-content/uploads/SHRM-2016-Human-Capital-Benchmarking-Report.pdf
