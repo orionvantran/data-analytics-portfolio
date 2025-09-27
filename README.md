@@ -32,7 +32,7 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 - Analyzed attrition patterns in an HR dataset of 311 employees  
 - Found **tenure is the strongest predictor of turnover**, with **first-year Production employees at the highest risk**  
 - Developed an **ROI estimate** showing that a **5% reduction in first-year Production attrition could save ~$375K annually**  
-- 📂 [View Project](./hr_turnover_analysis)  
+- 📂 [View Project](./Data_Project_1_HR_Attrition)  
 
 ---
 
