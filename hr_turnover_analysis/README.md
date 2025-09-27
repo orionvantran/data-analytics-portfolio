@@ -13,5 +13,5 @@ This project analyzes employee attrition patterns using an HR dataset of 311 emp
 - PowerPoint (for presentation slides)
 
 ### Deliverables
-- [RMarkdown Report](./hr_turnover_analysis.Rmd)
+- [RMarkdown Report](https://rpubs.com/oriontran/hr_turnover_analysis)
 - [Presentation Slides](./hr_turnover_analysis_slides.pptx)
