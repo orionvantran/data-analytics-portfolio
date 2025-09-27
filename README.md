@@ -29,10 +29,12 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 ### 1. HR Turnover Analysis  
 ![R](https://img.shields.io/badge/R-276DC3?logo=r&logoColor=white)  ![RMarkdown](https://img.shields.io/badge/RMarkdown-276DC3?logo=rstudio&logoColor=white)  ![PowerPoint](https://img.shields.io/badge/PowerPoint-B7472A?logo=microsoft-powerpoint&logoColor=white)  
 
-- Analyzed attrition patterns in an HR dataset of 311 employees  
+- Analyzed attrition patterns using an HR dataset (311 employee records from [Kaggle](https://www.kaggle.com/datasets/rhuebner/human-resources-data-set))  
 - Found **tenure is the strongest predictor of turnover**, with **first-year Production employees at the highest risk**  
 - Developed an **ROI estimate** showing that a **5% reduction in first-year Production attrition could save ~$375K annually**  
-- 📂 [View Project](./Project_1_HR_Attrition)  
+- 📂 [View Project](./Project_1_HR_Attrition)
+
+  
 
 ---
 
