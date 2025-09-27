@@ -13,6 +13,5 @@ This project analyzes employee attrition patterns using an HR dataset of 311 emp
 - PowerPoint (for presentation slides)
 
 ### Deliverables
-- [RMarkdown Report](https://github.com/YOURUSERNAME/data-analytics-portfolio/blob/main/hr_turnover_analysis/hr_turnover_analysis.Rmd)
-- [Presentation Slides](https://github.com/YOURUSERNAME/data-analytics-portfolio/blob/main/hr_turnover_analysis/hr_turnover_analysis_slides.pptx)
-
+- [RMarkdown Report](./hr_turnover_analysis.Rmd)
+- [Presentation Slides](./hr_turnover_analysis_slides.pptx)
