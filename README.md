@@ -38,9 +38,14 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 
 ---
 
-### 2. Sales Dashboard (Excel) 
-![Excel](https://img.shields.io/badge/Excel-217346?logo=microsoft-excel&logoColor=white)
-- (In Progress)
+### 2. Retail Sales Performance Dashboard (Excel)  
+![Excel](https://img.shields.io/badge/Excel-217346?logo=microsoft-excel&logoColor=white)  ![Power Query](https://img.shields.io/badge/Power%20Query-217346?logo=microsoft-excel&logoColor=white)  ![Data Visualization](https://img.shields.io/badge/Dashboard-Design-orange)  
+
+- Built an **interactive Excel dashboard** analyzing retail sales across regions, product categories, and time periods  
+- Identified that the **Central Region operates at a loss** due to **heavy discounting (24%)**, while the **West Region leads in sales and profit** but faces high return rates  
+- Found **Technology** as the top-performing category (**~16% margin**) and **Furniture** as the weakest (“high sales, low profit”)  
+- Created **dynamic KPI cards, slicers, and trend charts** using Excel PivotTables and Power Query transformations  
+- 📂 [View Project](./excel-sales-dashboard)
 
 ---
 
