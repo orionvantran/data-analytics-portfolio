@@ -59,6 +59,19 @@ The dataset contains employee demographic, job, and performance variables used t
 
 ---
 
+## 📚 File Structure
+| File / Folder | Description |
+|----------------|--------------|
+| `hr_turnover_analysis.R` | Main R script containing data cleaning, analysis, and visualization steps |
+| `hr_turnover_analysis.Rmd` | RMarkdown file used for reproducible analysis and report generation |
+| `data/hr_dataset_v14.csv` | Original HR dataset used for analysis (311 employee records) |
+| `output/hr_turnover_analysis.html` | Knitted HTML report summarizing analysis, visuals, and key findings |
+| `output/hr_turnover_analysis.md` | Markdown version of the RMarkdown report |
+| `output/hr_turnover_analysis_slides.pptx` | Presentation slides summarizing insights and ROI results |
+| `README.md` | Project overview, methodology, and deliverables description |
+
+---
+
 ## 👤 Author
 **Orion Tran**  
 Graduate Student – MPS Industrial-Organizational Psychology  
