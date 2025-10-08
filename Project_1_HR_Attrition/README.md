@@ -21,9 +21,9 @@ Analyses were performed in **R** using tidyverse libraries, with results summari
 ---
 
 ## ⚙️ Tools & Techniques Used
-- **R (tidyverse, dplyr, ggplot2, janitor, lubridate)** for data cleaning, wrangling, and visualization.  
-- **RMarkdown** for reproducible analysis and executive reporting.  
-- **PowerPoint** for summarizing insights and ROI recommendations.  
+- **R (tidyverse, dplyr, ggplot2, janitor, lubridate)** for data cleaning, wrangling, and visualization  
+- **RMarkdown** for reproducible analysis and executive reporting  
+- **PowerPoint** for summarizing insights and ROI recommendations  
 
 ---
 
@@ -32,7 +32,8 @@ Analyses were performed in **R** using tidyverse libraries, with results summari
 **Author:** Richard Huebner  
 **License:** Public dataset available for educational and analytical use  
 
-The dataset contains employee demographic, job, and performance variables used to model turnover risk.
+The dataset contains employee demographic, job, and performance variables used to model turnover risk.  
+[Download Dataset](./data/hr_dataset_v14.csv)
 
 ---
 
@@ -47,7 +48,7 @@ The dataset contains employee demographic, job, and performance variables used t
 
 ## 📈 Deliverables
 - 📄 [RMarkdown Report (RPubs)](https://rpubs.com/oriontran/hr_turnover_analysis)  
-- 📊 [Presentation Slides (PowerPoint)](./hr_turnover_analysis_slides.pptx)
+- 📊 [Presentation Slides (PowerPoint)](./output/hr_turnover_analysis_slides.pptx)
 
 ---
 
@@ -62,4 +63,3 @@ The dataset contains employee demographic, job, and performance variables used t
 **Orion Tran**  
 Graduate Student – MPS Industrial-Organizational Psychology  
 📍 George Mason University  
-*Aspiring HR & Program Analyst | Data-Driven Insights for People and Performance*
