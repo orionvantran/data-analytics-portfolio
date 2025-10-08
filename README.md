@@ -32,7 +32,7 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 - Analyzed attrition patterns using an HR dataset (311 employee records from [Kaggle](https://www.kaggle.com/datasets/rhuebner/human-resources-data-set))  
 - Found **tenure is the strongest predictor of turnover**, with **first-year Production employees at the highest risk**  
 - Developed an **ROI estimate** showing that a **5% reduction in first-year Production attrition could save ~$375K annually**  
-- 📂 [View Project](./Data_Projects/HR_Attrition)
+- 📂 [View Project](./Data_Projects/HR_Attrition_R)
 
   
 
@@ -45,7 +45,7 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 - Identified that the **Central Region operates at a loss** due to **heavy discounting (24%)**, while the **West Region leads in sales and profit** but faces high return rates  
 - Found **Technology** as the top-performing category (**~16% margin**) and **Furniture** as the weakest (“high sales, low profit”)  
 - Created **dynamic KPI cards, slicers, and trend charts** using Excel PivotTables and Power Query transformations  
-- 📂 [View Project](./Data_Projects/Excel_Sales)
+- 📂 [View Project](./Data_Projects/Sales_Dashboard_Excel)
 
 ---
 
