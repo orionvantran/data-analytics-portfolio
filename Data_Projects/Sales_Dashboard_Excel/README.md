@@ -127,6 +127,7 @@ The visual below summarizes applied steps in Power Query before dashboard creati
 
 ---
 
+```
 ## 📚 File Structure
 excel_sales_dashboard/
 │
@@ -138,6 +139,7 @@ excel_sales_dashboard/
 ├── excel_sales_dashboard.xlsx
 ├── retail_supply_chain_sales_dataset.xlsx
 └── README.md
+```
 
 ---
 

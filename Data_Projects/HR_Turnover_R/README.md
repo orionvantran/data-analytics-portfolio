@@ -62,6 +62,7 @@ The dataset contains employee demographic, job, and performance variables used t
 
 ---
 
+```
 ## 📚 File Structure
 HR_Turnover_R/
 │
@@ -81,6 +82,8 @@ HR_Turnover_R/
 ├── hr_turnover_analysis.R
 ├── hr_turnover_analysis.Rmd
 └── README.md
+```
+
 ---
 
 _Created by **Orion Tran** as part of a personal data analytics portfolio using R and RMarkdown._
