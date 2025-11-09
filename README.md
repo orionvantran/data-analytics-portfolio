@@ -36,7 +36,7 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 - Analyzed attrition patterns using an HR dataset with 311 employee records  
 - Found **tenure is the strongest predictor of turnover**, with **first-year Production employees at the highest risk**  
 - Developed an **ROI estimate** showing that a **5% reduction in first-year Production attrition could save ~$375K annually**  
-- 📂 [View Project](./HR_Turnover_R)
+- 📂 [View Project](./Data_Projects/HR_Turnover_R)
 
 ---
 
@@ -47,7 +47,7 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 - Identified that the **Central Region operates at a loss** due to **heavy discounting (24%)**, while the **West Region leads in sales and profit** but faces high return rates  
 - Found **Technology** as the top-performing category (**~16% margin**) and **Furniture** as the weakest (“high sales, low profit”)  
 - Created **dynamic KPI cards, slicers, and trend charts** using Excel PivotTables and Power Query transformations  
-- 📂 [View Project](./Sales_Dashboard_Excel)
+- 📂 [View Project](./Data_Projects/Sales_Dashboard_Excel)
 
 ---
 
@@ -60,7 +60,7 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 - Visualized **job distribution by state, role category, and top technical skills** using maps and bar charts  
 - Project created for **personal exploration and Tableau practice** to strengthen data visualization and design skills  
 - 🔗 [View on Tableau Public](https://public.tableau.com/app/profile/orion.tran8284/viz/2024USDataScienceJobPostingsDashboard/Dashboard1)  
-- 📂 [View Project](./Jobs_Dashboard_Tableau)
+- 📂 [View Project](./Data_Projects/Jobs_Dashboard_Tableau)
 
 ---
 
