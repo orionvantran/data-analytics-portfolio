@@ -16,20 +16,17 @@ The final deliverable is an **interactive Excel dashboard** featuring dynamic sl
 ---
 
 ### 🔍 Key Findings
-- **West Region** drives the most sales and profit but suffers from the **highest return rate (15%)**.  
-- **Central Region** experiences **losses due to heavy discounting (24%)**, reducing profit margins below zero.  
-- **Technology** category generates the **highest profit ($145K)** with strong margins (~16%).  
-- **Furniture** lags in profitability despite high sales volume — a **“high sales, low profit”** case.  
-- Across all regions, **higher discounts strongly correlate with lower profit margins.**
+- **West Region** leads in sales and profit but faces the **highest return rate (15%)**.  
+- **Central Region** operates at a loss due to **heavy discounting (24%)**.  
+- **Technology** drives profitability, while **Furniture** underperforms despite high sales.  
 
 ---
 
 ## ⚙️ Tools & Skills Used
-- **Microsoft Excel** (PivotTables, Power Query, KPI cards, Slicers)  
-- **Data Modeling** with a Calendar Table (one-to-many relationship)  
-- **Data Cleaning & Transformation** using Power Query  
-- **Descriptive Analytics** for sales, profit, margin, and discount metrics  
-- **Dashboard Design & Storytelling**
+- **Excel & Power Query** – Data cleaning, transformation, and KPI creation  
+- **PivotTables & Data Model** – Relationship modeling (Calendar Table, one-to-many)  
+- **Descriptive Analytics** – Sales, profit, margin, and discount metrics  
+- **Dashboard Design & Storytelling** – KPI cards, slicers, and dynamic visuals  
 
 ---
 
@@ -60,8 +57,7 @@ Data cleaning and transformation were performed entirely in **Power Query**:
 - Ensured no missing or duplicate records.  
 - Loaded both tables to the data model and created a date relationship.
 
-### Power Query Steps
-The following image summarizes all applied steps used to clean and model the dataset before dashboard creation:
+The visual below summarizes applied steps in Power Query before dashboard creation:
 
 <p align="center">
   <img src="screenshots/power_query_steps.png" width="700">
@@ -132,17 +128,17 @@ The following image summarizes all applied steps used to clean and model the dat
 ---
 
 ## 📚 File Structure
-| File | Description |
-|------|--------------|
-| `excel_sales_dashboard.xlsx` | Final dashboard (includes Clean Data, EDA, and Documentation Log tabs) |
-| `retail_supply_chain_sales_dataset.xlsx` | Original raw dataset |
-| `documentation_log.md` | Full workflow documentation |
-| `screenshots/` | Folder containing preview images for README |
+excel_sales_dashboard/
+│
+├── 📂 screenshots/
+│ ├── dashboard_preview.png
+│ └── eda_pivots.png
+│
+├── documentation_log.md
+├── excel_sales_dashboard.xlsx
+├── retail_supply_chain_sales_dataset.xlsx
+└── README.md
 
 ---
 
-## 👤 Author
-**Orion Tran**  
-Graduate Student – MPS Industrial-Organizational Psychology  
-📍 George Mason University  
-*Aspiring HR & Program Analyst | Data-Driven Insights for People and Performance*
+_Created by **Orion Tran** as part of a personal data visualization portfolio._
