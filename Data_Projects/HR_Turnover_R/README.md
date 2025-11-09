@@ -62,27 +62,27 @@ The dataset contains employee demographic, job, and performance variables used t
 
 ---
 
-```
 ## 📚 File Structure
+```plaintext
 HR_Turnover_R/
 │
 ├── 📂 data/
-│ └── hr_dataset_v14.csv
+│   └── hr_dataset_v14.csv
 │
 ├── 📂 images/
-│ ├── slide_2_turnover_matters.jpg
-│ ├── slide_4_highest_attrition.jpg
-│ └── slide_5_retention_gains.jpg
+│   ├── slide_2_turnover_matters.jpg
+│   ├── slide_4_highest_attrition.jpg
+│   └── slide_5_retention_gains.jpg
 │
 ├── 📂 output/
-│ ├── hr_turnover_analysis.html
-│ ├── hr_turnover_analysis.md
-│ └── hr_turnover_analysis_slides.pptx
+│   ├── hr_turnover_analysis.html
+│   └── hr_turnover_analysis_slides.pptx
 │
 ├── hr_turnover_analysis.R
 ├── hr_turnover_analysis.Rmd
+├── hr_turnover_analysis.md
 └── README.md
-```
+
 
 ---
 
