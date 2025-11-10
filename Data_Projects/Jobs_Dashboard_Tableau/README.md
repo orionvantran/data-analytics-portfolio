@@ -18,42 +18,34 @@ I created it to explore which **roles, skills, and companies dominate the data s
 
 ---
 
-### 🧩 Process Summary
+### 🧩 Process Summary  
 
-**Data Preparation**
+**Data Preparation (Excel & Power Query)**  
+* Imported multiple CSVs from a Kaggle dataset containing LinkedIn data-science job postings  
+* Performed all **data cleaning and transformation** in Power Query, including:  
+  * Text filtering and classification of job summaries into standardized categories (e.g., *Data Analyst, Data Engineer / Developer, Data Scientist / AI*)  
+  * Creation of calculated columns for **Work Type**, **Job Category**, and **Job Level**  
+  * Handling missing and null values, trimming inconsistent text, and removing duplicates  
+  * Mapping U.S. state abbreviations to full names, labeling unknown or remote listings as *“United States (Unlisted)”*  
+* Consolidated and exported the cleaned dataset (`cleaned_data.xlsx`) for use in Tableau  
 
-* Imported the LinkedIn job postings dataset from Kaggle
-* Cleaned missing values and filtered incomplete rows
-* Created **calculated fields** to standardize job categories (e.g., Analyst, Engineer, Scientist, Manager)
-* Added state name mapping logic to expand abbreviations, with unlisted jobs labeled as *“United States (Unlisted)”*
-* Ensured consistent formatting for skills, companies, and work types
-
-**Dashboard Design**
-
-* Built **KPI cards** for total postings, unique companies, remote %, and clearance %
-* Created visuals for **Top Technical Skills**, **Job Categories**, **Job Levels**, and **Top 10 Hiring Companies**
-* Designed a **U.S. map** for geographic distribution, including insets for Alaska, Hawaii, and D.C.
-* Applied a cohesive blue color palette, inside-bar labels, and minimal axis lines for readability
-* Added a footer with source attribution and author credit
-
----
-
-### 💡 Key Insights
-
-* **Analyst and Engineer roles** dominate the data-science job market nationwide
-* **California, Texas, and New York** have the highest concentration of postings
-* Many listings are **hybrid or unlisted**, reflecting flexibility in work location
-* **SQL, Python, and Tableau** are among the most requested technical skills
+**Dashboard Design (Tableau Public)**  
+* Designed a structured dashboard layout with:  
+  * **KPI cards** summarizing total postings, unique companies, % remote/hybrid, and % requiring clearance  
+  * **Bar charts** displaying job distribution by category, level, and technical skills  
+  * **U.S. map visualization** for geographic distribution, including insets for Alaska, Hawaii, and D.C.  
+  * **Company ranking table** showing top hiring organizations  
+* Applied a **consistent blue palette**, added **in-bar labels**, and removed unnecessary gridlines for a clean, modern presentation  
+* Included a **footer note** crediting LinkedIn and Kaggle as data sources and identifying the dashboard author  
 
 ---
 
-### 🛠️ Tools & Skills
+### 🛠️ Tools & Skills  
 
-* **Tableau Public** – Data visualization, calculated fields, interactive dashboard design
-* **Excel & Power Query** – Text filtering, data transformation, and declassification of job summaries into standardized categories (ETL)
-* **Data Preparation** – Extracting and merging CSVs, handling missing values, mapping state abbreviations, and standardizing columns
-* **Data Storytelling** – Clear KPI framing, visual hierarchy, and layout consistency
-
+* **Power Query (Excel)** – Data cleaning, text filtering, and calculated column creation for job classification and data standardization (ETL)  
+* **Tableau Public** – Interactive dashboard design, KPI visualization, and map-based geographic analysis  
+* **Data Preparation** – Extracting, transforming, and merging multiple CSVs into a single standardized dataset  
+* **Dashboard Design & Storytelling** – Visual hierarchy, cohesive layout, and consistent design structure  
 ---
 
 ### 📁 Project Files
