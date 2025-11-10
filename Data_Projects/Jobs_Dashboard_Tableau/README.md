@@ -1,6 +1,6 @@
 ## 🧠 2024 US Data Science Job Postings Dashboard
 
-![Dashboard Screenshot](images/dashboard-screenshot.png)
+![Dashboard Screenshot](images/dashboard-screenshot.jpg)
 
 ### 📘 Overview
 
