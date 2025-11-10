@@ -18,7 +18,8 @@ Here is where I leverage my I-O knowledge and data analytical skills to solve re
 ---
 
 ## 🎓 Certificates  
-![Coursera](https://img.shields.io/badge/-Coursera-0056D2?logo=coursera&logoColor=white)  ![Udemy](https://img.shields.io/badge/-Udemy-A435F0?logo=udemy&logoColor=white)  
+![Coursera](https://img.shields.io/badge/-Coursera-0056D2?logo=coursera&logoColor=white) 
+![Udemy](https://img.shields.io/badge/-Udemy-A435F0?logo=udemy&logoColor=white)  
 
 [Google Data Analytics Professional Certificate](https://www.coursera.org/account/accomplishments/specialization/3A580RUDIHU5)  
 [SQL Bootcamp](https://www.udemy.com/certificate/UC-be623841-1685-4ee5-a1ed-59ffdf3ab659/)  
