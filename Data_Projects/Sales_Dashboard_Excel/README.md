@@ -1,146 +1,105 @@
-# 📊 Retail Sales Performance Dashboard (Excel Project)
+<h1>📈 Retail Sales Performance Dashboard (Excel Project)</h1>
 
-![Excel](https://img.shields.io/badge/Tool-Excel-217346?logo=microsoft-excel&logoColor=white)
-![Power Query](https://img.shields.io/badge/Data%20Prep-Power%20Query-blue)
-![Data Visualization](https://img.shields.io/badge/Focus-Dashboard%20Design-orange)
-![EDA](https://img.shields.io/badge/Analysis-EDA-green)
 
----
+<div class="badges">
+  <img src="https://img.shields.io/badge/Tool-Excel-217346?logo=microsoft-excel&logoColor=white">
+  <img src="https://img.shields.io/badge/Data%20Prep-Power%20Query-blue">
+  <img src="https://img.shields.io/badge/Focus-Interactive%20Dashboard-orange">
+  <img src="https://img.shields.io/badge/Analysis-EDA-green">
+<hr>
 
-## 🧠 Project Overview
-This project analyzes **retail sales performance** across U.S. regions, product categories, and time periods using Excel and Power Query.  
-The goal was to identify which regions and categories drive profitability and where discounting or returns reduce margins.
+<h2>Dashboard Preview</h2>
 
-The final deliverable is an **interactive Excel dashboard** featuring dynamic slicers, KPI cards, and trend visualizations.
+<h3>Main Dashboard</h3>
+<img src="screenshots/dashboard_preview.png" width="800">
 
----
+<h3>EDA Sheet</h3>
+<img src="screenshots/eda_pivots.png" width="800">
 
-### 🔍 Key Findings
-- **West Region** leads in sales and profit but faces the **highest return rate (15%)**.  
-- **Central Region** operates at a loss due to **heavy discounting (24%)**.  
-- **Technology** drives profitability, while **Furniture** underperforms despite high sales.  
+<hr>
 
----
-
-## ⚙️ Tools & Skills Used
-- **Excel & Power Query** – Data cleaning, transformation, and KPI creation  
-- **PivotTables & Data Model** – Relationship modeling (Calendar Table, one-to-many)  
-- **Descriptive Analytics** – Sales, profit, margin, and discount metrics  
-- **Dashboard Design & Storytelling** – KPI cards, slicers, and dynamic visuals  
-
----
-
-## 🧩 Dataset Description
-**Source:** [Retail Supply Chain Sales Dataset – Kaggle](https://www.kaggle.com/datasets/shandeep777/retail-supply-chain-sales-dataset)  
-**Author:** Shandeep777  
-**License:** Public dataset available on Kaggle for educational and analytical use  
-
-This dataset contains ~10,000 transactional records from a retail supply chain environment.  
-It includes fields for order dates, regions, product categories, sub-categories, sales, discounts, profits, and returns.  
-
-**Tables:**
-- `Retails Order Full Dataset` — main transactional fact table  
-- `Calendar Table` — continuous date lookup for time-series analysis  
-
-**Key Variables:** Order Date, Region, Category, Sub-Category, Sales, Quantity, Discount, Profit, Returned  
-
-> Note: The dataset was cleaned and transformed using Power Query in Excel to remove unused fields, correct data types, and calculate key metrics (Profit Margin, Returned Flag).
-
----
-
-## 🧹 Data Preparation Summary
-Data cleaning and transformation were performed entirely in **Power Query**:
-- Promoted headers, verified data types, and removed irrelevant columns.  
-- Created custom columns:  
-  - `Profit Margin` = Profit / Sales  
-  - `Returned (Binary)` = if Returned = "Yes" then 1 else 0  
-- Ensured no missing or duplicate records.  
-- Loaded both tables to the data model and created a date relationship.
-
-The visual below summarizes applied steps in Power Query before dashboard creation:
-
-<p align="center">
-  <img src="screenshots/power_query_steps.png" width="700">
+<h2>🧠 Project Overview</h2>
+<p>
+This project analyzes retail sales performance across U.S. regions, product categories, and time periods using Excel and Power Query.
+The purpose is to identify what drives profitability and how discounting and returns influence margins. The final deliverable is an
+interactive Excel dashboard with slicers, KPI cards, and dynamic visualizations.
 </p>
 
-➡️ See full process in [documentation_log.md](./documentation_log.md)
+<h3>🔍 Key Findings</h3>
+<ul>
+  <li><strong>West Region</strong> leads in sales and profit but has the <strong>highest return rate (~15%)</strong>.</li>
+  <li><strong>Central Region</strong> operates at a loss due to <strong>high discounting (24%)</strong>.</li>
+  <li><strong>Technology</strong> drives profit; <strong>Furniture</strong> shows strong sales but weak margins.</li>
+</ul>
 
----
+<hr>
 
-## 📊 Dashboard Features
+<h2>⚙️ Tools & Skills Used</h2>
+<ul>
+  <li>Excel + Power Query (data cleaning and KPI calculations)</li>
+  <li>PivotTables & Data Model (Calendar table relationship)</li>
+  <li>Descriptive and comparative analytics</li>
+  <li>Dashboard design and data storytelling</li>
+</ul>
 
-### KPIs
-- **Total Sales ($)**
-- **Total Profit ($)**
-- **Average Profit Margin (%)**
-- **Average Discount (%)**
-- **Return Rate (%)**
+<hr>
 
-### Interactive Components
-- **Slicers:** Year, Category, Region  
-- **Charts:**  
-  - Sales & Profit by Quarter (trend)  
-  - Sales vs Profit by Category  
-  - Average Profit Margin by Region  
-  - Average Discount by Region  
-  - Return Rate by Sub-Category  
+<h2>🧩 Dataset Description</h2>
+<p><strong>Source:</strong> Retail Supply Chain Sales Dataset (Kaggle)</p>
+<p>~10,000 retail transactions with Region, Category, Sales, Profit, Discount, and Return Flags.</p>
 
----
+<hr>
 
-## 🧠 Key Insights
+<h2>🧹 Data Preparation Summary</h2>
+<ul>
+  <li>Corrected data types and removed unnecessary fields</li>
+  <li>Created calculated metrics (Profit Margin, Return Binary)</li>
+  <li>Used a Calendar Table for time-series analysis filters</li>
+</ul>
 
-**Regional Performance**  
-- **West Region** leads in sales and profit but faces the highest return rate (~15%).  
-- **Central Region** operates at a loss due to high discounting (24%).  
-- **East & South** maintain steady profits with moderate discounts.
+<img src="screenshots/power_query_steps.png" width="800">
 
-**Category Trends**  
-- **Technology** drives profitability with strong margins (~16%).  
-- **Furniture** underperforms despite high sales — heavy discounts hurt profit.  
-- **Office Supplies** remains stable and balanced.
+<hr>
 
-**Sub-Category Highlights**  
-- **Copiers** and **Paper** achieve the highest margins with low discounts.  
-- **Binders** and **Appliances** are loss leaders due to deep discounts.
+<h2>📊 Dashboard Features</h2>
+<h3>KPI Cards</h3>
+<ul>
+  <li>Total Sales</li>
+  <li>Total Profit</li>
+  <li>Profit Margin (%)</li>
+  <li>Average Discount (%)</li>
+  <li>Return Rate (%)</li>
+</ul>
 
----
+<h3>Interactive Components</h3>
+<ul>
+  <li>Slicers: Year, Category, Region</li>
+  <li>Sales & Profit Trend by Quarter</li>
+  <li>Profit and Discount Comparisons by Region</li>
+  <li>Return Rate by Sub-category</li>
+</ul>
 
-## 📈 Dashboard Preview
+<hr>
 
-<h3 align="center">Main Dashboard</h3>
-<p align="center">
-  <img src="screenshots/dashboard_preview.png" width="700">
-</p>
+<h2>🧠 Analytical Insights</h2>
+<ul>
+  <li><strong>West + Technology</strong> = strongest performance intersection.</li>
+  <li><strong>Central + Furniture</strong> = requires pricing adjustments.</li>
+  <li>Discounting impacts profit more than return frequency.</li>
+</ul>
 
-<h3 align="center">EDA Sheet</h3>
-<p align="center">
-  <img src="screenshots/eda_pivots.png" width="700">
-</p>
+<hr>
 
----
+<h2>🏁 Takeaways</h2>
+<ul>
+  <li>Reduce discounting in Central to recover margin.</li>
+  <li>Expand Technology category positioning.</li>
+  <li>Reevaluate Furniture pricing strategy.</li>
+</ul>
 
-## 🏁 Results & Takeaways
-- Lower discounting consistently increases profit margins.  
-- Discounting has a larger impact on profitability than product returns.  
-- **West + Technology** are the strongest performance combination.  
-- **Central + Furniture** require pricing and cost-control interventions.
+<hr>
 
----
+<p><em>Created by <strong>Orion Tran</strong> as part of a personal data visualization portfolio.</em></p>
 
-```
-## 📚 File Structure
-excel_sales_dashboard/
-│
-├── 📂 screenshots/
-│ ├── dashboard_preview.png
-│ └── eda_pivots.png
-│
-├── documentation_log.md
-├── excel_sales_dashboard.xlsx
-├── retail_supply_chain_sales_dataset.xlsx
-└── README.md
-```
-
----
-
-_Created by **Orion Tran** as part of a personal data visualization portfolio._
+</body>
+</html>
